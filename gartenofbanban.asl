@@ -1,3 +1,4 @@
+//Autostart and Loadremoval by Lox
 state("Clay-Win64-Shipping"){}
 
 startup
