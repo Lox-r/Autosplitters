@@ -1,5 +1,14 @@
-//Autostart and Loadremoval by Lox
-state("Clay-Win64-Shipping"){}
+state("Clay-Win64-Shipping")
+{
+    //probably not relevant
+    // bool OpilaBirdShown : "Clay-Win64-Shipping.exe", 0x64DAF90, 0x2A8, 0x90, 0x379;
+    // bool BallPitShufflersStopped : "Clay-Win64-Shipping.exe", 0x64DAF90, 0x2A8, 0x90, 0x37A;
+    // bool ParkourCourseActivated : "Clay-Win64-Shipping.exe", 0x64DAF90, 0x2A8, 0x90, 0x37B;
+    // bool ColorPuzzleSolved : "Clay-Win64-Shipping.exe", 0x64DAF90, 0x2A8, 0x90, 0x37C;
+    // bool Egg6PickedUp : "Clay-Win64-Shipping.exe", 0x64DAF90, 0x2A8, 0x90, 0x37E;
+    // bool ChaseMusic : "Clay-Win64-Shipping.exe", 0x611A150, 0x6E0;
+    // int elevator : "Clay-Win64-Shipping.exe", 0x64DA898, 0x110, 0xA0, 0x280, 0x90, 0x0;
+}
 
 startup
 {
@@ -54,13 +63,32 @@ update
     vars.Helper.MapPointers();
 
     var world = vars.FNameToString(current.GWorldName);
-    if (!string.NullOrEmpty(world) && world != "None") current.World = world;
+    if (!string.IsNullOrEmpty(world) && world != "None") current.World = world;
+    if (old.World != current.World) vars.Log("World: " + current.World);
+
+    // print("Camera Position XYZ = " + current.POVX.ToString() + " " + current.POVY.ToString() + " " + current.POVZ.ToString());
+
+    //probably not relevant
+    // if (old.OpilaBirdShown != current.OpilaBirdShown) vars.Log("Opila Bird Shown: " + current.OpilaBirdShown);
+    // if (old.BallPitShufflersStopped != current.BallPitShufflersStopped) vars.Log("BallPit Shufflers Stopped: " + current.BallPitShufflersStopped);
+    // if (old.ParkourCourseActivated != current.ParkourCourseActivated) vars.Log("Parkour Course Activated: " + current.ParkourCourseActivated);
+    // if (old.ColorPuzzleSolved != current.ColorPuzzleSolved) vars.Log("Color Puzzle Solved: " + current.ColorPuzzleSolved);
+    // if (old.Egg6PickedUp != current.Egg6PickedUp) vars.Log("Egg 6 Picked Up: " + current.Egg6PickedUp);
+    // if (old.elevator != current.elevator) vars.Log("elevator: " + current.elevator);
 }
 
 start
 {
     return current.World == "FirstPersonMap" && old.POVX != current.POVX && current.POVX != 0 && old.POVX != 0;
 }
+
+// split
+// {
+//     if ( current.World == "FirstPersonMap" && old.elevator == 1109234432 && current.elevator != old.elevator)
+//     {
+//         return true;
+//     }
+// }
 
 isLoading
 {
