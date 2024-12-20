@@ -6,7 +6,7 @@ startup
     Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Unity");
     vars.Helper.GameName = "There Is No Game: Wrong Dimension";
     vars.Helper.LoadSceneManager = true;
-    vars.Helper.AlertLoadless();
+    vars.Helper.AlertRealTime();
 
     dynamic[,] _settings =
     {
