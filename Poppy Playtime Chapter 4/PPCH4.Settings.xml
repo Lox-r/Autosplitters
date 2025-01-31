@@ -1,0 +1,23 @@
+<Settings>
+    <Setting Id="ItemSplit"  Label="Item Splits" State="false">
+		<Setting Id="Items"  Label="Key Items" State="false">
+			<Setting Id="[+] ToyGraveyard_Key_UtilityRoom (!)"  Label="Utility Room Key" State="false"/>
+			<Setting Id="[+] PrisonCellBlock_Key_RedKeyCard (!)"  Label="Red Keycard" State="false"/>
+		</Setting>
+		<Setting Id="Hands"  Label="Hands" State="false">
+			<Setting Id="[+] RedHand (!)"  Label="Red Hand" State="false"/>
+		</Setting>
+		<Setting Id="Files"  Label="Collected Files" State="false">
+			<Setting Id="[+] RedSmokeDocumentation (!)"  Label="Caution: Red Smoke" State="false"/>
+			<Setting Id="[+] ToyGraveyard_Diary_00 (!)"  Label="Riley Journal: Entry 1" State="false"/>
+			<Setting Id="[+] ToyGraveyard_Diary_01 (!)"  Label="Riley Journal: Entry 2" State="false"/>
+			<Setting Id="[+] ToyGraveyard_Diary_02 (!)"  Label="Riley Journal: Entry 3" State="false"/>
+			<Setting Id="[+] CellBlocks_GuardNote1_Note (!)"  Label="Cole Journal: Entry 1" State="false"/>
+		</Setting>
+		<Setting Id="Videos"  Label="Collected VHS Tapes" State="false">
+			<Setting Id="[+] FlareGunSafetyVideo (!)"  Label="Flare Hand Safety Video" State="false"/>
+			<Setting Id="[+] BreakTimeVHSTape (!)"  Label="Break Time" State="false"/>
+		</Setting>
+	</Setting>
+</Settings>
+
