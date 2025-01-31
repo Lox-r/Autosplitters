@@ -35,6 +35,8 @@ init
 	vars.Helper["isLoading"] = vars.Helper.Make<bool>(gSyncLoad);
 	
 	vars.Helper["Level"] = vars.Helper.MakeString(gEngine, 0xAE0, 0x14);
+
+	vars.Helper["CheckpointID"] = vars.Helper.Make<ulong>(gEngine, 0xA58, 0x78, 0x830, 0x158, 0x34);
 	
 	vars.Helper["localPlayer"] = vars.Helper.Make<ulong>(gEngine, 0x1080, 0x38, 0x0, 0x30, 0x18);
 	vars.Helper["localPlayer"].FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
