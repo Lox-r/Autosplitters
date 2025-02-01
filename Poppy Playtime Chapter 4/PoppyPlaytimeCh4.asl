@@ -1,3 +1,5 @@
+//Autostart,Autosplit and Load Removal
+//Made by Lox and TheDementedSalad
 state("ch4_pro-Win64-Shipping"){}
 state("ch4_pro-WinGDK-Shipping"){}
 
@@ -116,6 +118,7 @@ onStart
 
 start
 {
+	return current.Y < 8544f && current.Y != old.Y && current.Level == "pro/Maps/00_Persistent/00_Persistent";
 }
 
 split
