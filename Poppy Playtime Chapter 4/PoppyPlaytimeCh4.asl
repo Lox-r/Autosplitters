@@ -35,6 +35,8 @@ init
 	}
 	
 	vars.Helper["isLoading"] = vars.Helper.Make<bool>(gSyncLoad);
+
+	vars.Helper["TransitionType"] = vars.Helper.Make<int>(gEngine, 0xB93);
 	
 	vars.Helper["Level"] = vars.Helper.MakeString(gEngine, 0xAE0, 0x14);
 
@@ -100,6 +102,8 @@ update
 	
 	vars.Helper.Update();
 	vars.Helper.MapPointers();
+
+    if (old.TransitionType != current.TransitionType) vars.Log("Transition Type = : " + current.TransitionType);
 	
 	if(timer.CurrentPhase == TimerPhase.NotRunning)
 	{
@@ -163,11 +167,8 @@ split
 
 isLoading
 {
-	return current.isLoading || vars.FNameToShortString2(current.localPlayer) != "BP_PPPlayerController_C_";
+	return current.isLoading || current.TransitionType == 1 || vars.FNameToShortString2(current.localPlayer) != "BP_PPPlayerController_C_";
 }
 
 reset
-
-{
-
-}
+{}
