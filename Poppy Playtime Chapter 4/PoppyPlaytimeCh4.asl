@@ -38,7 +38,7 @@ init
 
 	vars.Helper["TransitionType"] = vars.Helper.Make<int>(gEngine, 0xB93);
 	
-	vars.Helper["Level"] = vars.Helper.MakeString(gEngine, 0xAE0, 0x14);
+	vars.Helper["Level"] = vars.Helper.MakeString(gEngine, 0xB98, 0x14);
 
 	vars.Helper["CheckpointID"] = vars.Helper.Make<ulong>(gEngine, 0xA58, 0x78, 0x830, 0x158, 0x34);
 	
