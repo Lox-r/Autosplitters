@@ -1,23 +1,106 @@
 <Settings>
+	<Setting Id="Checkpoint"  Label="Checkpoint Splits" State="false">
+		<Setting Id="Checkpoint.ToyGraveyard.1"  Label="Enter the Toy Graveyard" State="false"/>
+		<Setting Id="Checkpoint.ToyGraveyard.3"  Label="Reach the Train" State="false"/>
+		<Setting Id="Checkpoint.PrisonCellBlocks.1"  Label="Reach the Prison" State="false"/>
+		<Setting Id="Checkpoint.PrisonCellBlocks.2"  Label="Reach Living Quarters" State="false"/>
+		<Setting Id="Checkpoint.PrisonCellBlocks.3"  Label="Reach Guard Desk" State="false"/>
+		<Setting Id="Checkpoint.PrisonCellBlocks.4"  Label="Reach Red Cell Block" State="false"/>
+		<Setting Id="Checkpoint.PrisonCellBlocks.7"  Label="Escaped Gas" State="false"/>
+		<Setting Id="Checkpoint.ContainmentZone.1"  Label="Reach Containment Zone" State="false"/>
+		<Setting Id="Checkpoint.ContainmentZone.3"  Label="Meet Yarnaby" State="false"/>
+		<Setting Id="Checkpoint.ContainmentZone.6"  Label="Enter Server Room" State="false"/>
+		<Setting Id="Checkpoint.ContainmentZone.8"  Label="Exit Vents After Yarnaby Chase" State="false"/>
+		<Setting Id="Checkpoint.PrisonUtilityZone.1"  Label="Enter Prison Utility Zone" State="false"/>
+		<Setting Id="Checkpoint.PrisonUtilityZone.2"  Label="Enter Prison Yard" State="false"/>
+		<Setting Id="Checkpoint.PrisonUtilityZone.3"  Label="Meet Up with Doey" State="false"/>
+		<Setting Id="Checkpoint.SafeHaven.1"  Label="Finish the Gear Puzzle" State="false"/>
+		<Setting Id="Checkpoint.Sewers.1"  Label="Enter the Sewers" State="false"/>
+		<Setting Id="Checkpoint.NoMansLand.1"  Label="Enter No Mans Land" State="false"/>
+		<Setting Id="Checkpoint.NoMansLand.3"  Label="Get On Conveyor Belt" State="false"/>
+		<Setting Id="Checkpoint.NoMansLand.5"  Label="Press the Red Button" State="false"/>
+		<Setting Id="Checkpoint.NoMansLand.7"  Label="Double Hand Scanner Room" State="false"/>
+		<Setting Id="Checkpoint.NoMansLand.8"  Label="Escaped Yarnaby For Good" State="false"/>
+		<Setting Id="Checkpoint.DoctorsDomain.1"  Label="Enter the Doctor's Domain" State="false"/>
+		<Setting Id="Checkpoint.DoctorsDomain.2"  Label="Go Through Blue Keycard Door" State="false"/>
+		<Setting Id="Checkpoint.DoctorsDomain.4"  Label="Exit Freeze Trap Room" State="false"/>
+		<Setting Id="Checkpoint.DoctorsDomain.7"  Label="Lose Gas Mask" State="false"/>
+		<Setting Id="Checkpoint.DoctorsDomain.9"  Label="Escape Sheep Toy" State="false"/>
+		<Setting Id="Checkpoint.DoctorsHeadquarters.2"  Label="Trapped By the Doctor" State="false"/>
+		<Setting Id="Checkpoint.DoctorsHeadquarters.4"  Label="Place All Batteries" State="false"/>
+		<Setting Id="Checkpoint.Sewers.2"  Label="Back to the Sewers" State="false"/>
+		<Setting Id="Checkpoint.Foundation.1"  Label="Enter the Foundation" State="false"/>
+		<Setting Id="Checkpoint.Foundation.4"  Label="Activate Gas Overflow" State="false"/>
+		<Setting Id="Checkpoint.WasteWaterPlant.3"  Label="Conversation With Doey" State="false"/>
+		<Setting Id="Checkpoint.SafeHaven.3"  Label="Return to Safe Haven" State="false"/>
+		<Setting Id="Checkpoint.DoeyBossPit.3"  Label="Room Before Boss Room" State="false"/>
+		<Setting Id="Checkpoint.DoeyBossPit.5"  Label="Defeated Doey" State="false"/>
+		<Setting Id="Checkpoint.TheLabsEntrance.2"  Label="Fallen Down the Hole" State="false"/>
+	</Setting>
     <Setting Id="ItemSplit"  Label="Item Splits" State="false">
 		<Setting Id="Items"  Label="Key Items" State="false">
 			<Setting Id="[+] ToyGraveyard_Key_UtilityRoom (!)"  Label="Utility Room Key" State="false"/>
-			<Setting Id="[+] PrisonCellBlock_Key_RedKeyCard (!)"  Label="Red Keycard" State="false"/>
-		</Setting>
-		<Setting Id="Hands"  Label="Hands" State="false">
 			<Setting Id="[+] RedHand (!)"  Label="Red Hand" State="false"/>
+			<Setting Id="[+] PrisonCellBlock_Key_RedKeyCard (!)"  Label="Red Keycard" State="false"/>
+			<Setting Id="[+] ContainmentZone_ArchivesKeycard (!)"  Label="Green Keycard" State="false"/>
+			<Setting Id="[+] LeverPrisonYard_01 (!)"  Label="Prison Yard Lever 1" State="false"/>
+			<Setting Id="[+] LeverPrisonYard_02 (!)"  Label="Prison Yard Lever 2" State="false"/>
+			<Setting Id="[+] LeverPrisonYard_03 (!)"  Label="Prison Yard Lever 3" State="false"/>
+			<Setting Id="[+] LeverKitchen (!)"  Label="Kitchen Lever" State="false"/>
+			<Setting Id="[+] NoMansLand_Key_Conveyor (!)"  Label="Conveyor Room Key" State="false"/>
+			<Setting Id="[+] NoMansLand_Key_Storage (!)"  Label="Power Room 2F Lever" State="false"/>
+			<Setting Id="[+] NoMansLand_Keycard2 (!)"  Label="Blue Keycard (No Mans Land)" State="false"/>
+			<Setting Id="[+] DoctorsDomain_BluekeyCard (!)"  Label="Blue Keycard (Doctor's Domain)" State="false"/>
+			<Setting Id="[+] GasMask (!)"  Label="Broken Gask Mask" State="false"/>
+			<Setting Id="[+] DoctorsDomainPSC_Keycard (!)"  Label="VSC Keycard" State="false"/>
+			<Setting Id="[+] OmniChip (!)"  Label="Omni-Chip" State="false"/>
+			<Setting Id="[+] OmniHand (!)"  Label="Omni-Red Hand" State="false"/>
+			<Setting Id="[+] Foundation_Explosive1 (!)"  Label="Explosive 1" State="false"/>
+			<Setting Id="[+] Foundation_Keycard (!)"  Label="Purple Keycard" State="false"/>
+			<Setting Id="[+] Foundation_Explosive2 (!)"  Label="Explosive 2" State="false"/>
+			<Setting Id="[+] Foundation_Explosive3 (!)"  Label="Explosive 3" State="false"/>
+			<Setting Id="[+] Foundation_Explosive4 (!)"  Label="Explosive 4" State="false"/>
 		</Setting>
 		<Setting Id="Files"  Label="Collected Files" State="false">
 			<Setting Id="[+] RedSmokeDocumentation (!)"  Label="Caution: Red Smoke" State="false"/>
 			<Setting Id="[+] ToyGraveyard_Diary_00 (!)"  Label="Riley Journal: Entry 1" State="false"/>
 			<Setting Id="[+] ToyGraveyard_Diary_01 (!)"  Label="Riley Journal: Entry 2" State="false"/>
 			<Setting Id="[+] ToyGraveyard_Diary_02 (!)"  Label="Riley Journal: Entry 3" State="false"/>
+			<Setting Id="[+] ToyGraveyard_Diary_03 (!)"  Label="Riley Journal: Entry 4" State="false"/>
+			<Setting Id="[+] ToyGraveyard_Diary_04 (!)"  Label="Riley Journal: Entry 5" State="false"/>
 			<Setting Id="[+] CellBlocks_GuardNote1_Note (!)"  Label="Cole Journal: Entry 1" State="false"/>
+			<Setting Id="[+] CellBlocks_Observation2_Note (!)"  Label="Weekly Checkup: 1424" State="false"/>
+			<Setting Id="[+] CellBlocks_1166PrisonerProfile_Note (!)"  Label="Prisoner Profile, Experiment 1166" State="false"/>
+			<Setting Id="[+] CellBlocks_GuardNote2_Note (!)"  Label="Cole Journal: Entry 2" State="false"/>
+			<Setting Id="[+] CellBlocks_GuardNote3_Note (!)"  Label="Cole Journal: Entry 3" State="false"/>
+			<Setting Id="[+] CellBlocks_GuardNote4_Note (!)"  Label="Cole Journal: Entry 4" State="false"/>
+			<Setting Id="[+] UtilityZone_ReconReport1_Note (!)"  Label="Reconnaissance Report: 12.15.04" State="false"/>
+			<Setting Id="[+] SafeHaven_JacksParents_Note (!)"  Label="A Cryptic Letter" State="false"/>
+			<Setting Id="[+] SafeHaven_SafeHavenProjectOverview (!)"  Label="Project Overview: Safe Haven" State="false"/>
+			<Setting Id="[+] SafeHaven_ReconReport2_Note (!)"  Label="Reconnaissance Report: 01.10.05" State="false"/>
+			<Setting Id="[+] NoMansLand_Propoganda_Notes (!)"  Label="Propaganda Flier" State="false"/>
+			<Setting Id="[+] DoctorsDomain_MissionStatement_Notes (!)"  Label="Secondary Lab Mission Statement" State="false"/>
+			<Setting Id="[+] DoctorsDomain_HSKT_Doc (!)"  Label="Secondary Lab Instructions" State="false"/>
+			<Setting Id="[+] SafeHaven_UntitledPoem_Note (!)"  Label="An Untitled Poem" State="false"/>
+			<Setting Id="[+] Foundation_AccelerantNote (!)"  Label="Foundation Operator Note" State="false"/>
 		</Setting>
 		<Setting Id="Videos"  Label="Collected VHS Tapes" State="false">
 			<Setting Id="[+] FlareGunSafetyVideo (!)"  Label="Flare Hand Safety Video" State="false"/>
 			<Setting Id="[+] BreakTimeVHSTape (!)"  Label="Break Time" State="false"/>
+			<Setting Id="[+] TheDoctorVHSTape (!)"  Label="The Doctor" State="false"/>
+			<Setting Id="[+] StellaTape (!)"  Label="Stella Greyber Project Audit" State="false"/>
+			<Setting Id="[+] TheaterIncidentVHSTape (!)"  Label="'93 Theater Incident" State="false"/>
+			<Setting Id="[+] OllieandPoppyVHSTape (!)"  Label="Ollie" State="false"/>
+			<Setting Id="[+] ConstructionPlansTape (!)"  Label="Construction Plans: The Shelf" State="false"/>
+			<Setting Id="[+] DoeyKevinTape (!)"  Label="1322 Report: Kevin" State="false"/>
+			<Setting Id="[+] CivilWar1VHSTape (!)"  Label="Security Feed 02.09.01" State="false"/>
+			<Setting Id="[+] FixedExperiment1354Tape (!)"  Label="Experiment #1354" State="false"/>
+			<Setting Id="[+] ManagementRichTape (!)"  Label="Management: Rich" State="false"/>
+			<Setting Id="[+] 1322Report:Jack (!)"  Label="1322 Report: Jack" State="false"/>
+			<Setting Id="[+] CivilWar2Video (!)"  Label="A Reminder" State="false"/>
+			<Setting Id="[+] TopSecretVideo (!)"  Label="Top Secret" State="false"/>
 		</Setting>
+			<Setting Id="FinalSplit"  Label="Final Split (Always Active)" State="false"/>
 	</Setting>
 </Settings>
 
