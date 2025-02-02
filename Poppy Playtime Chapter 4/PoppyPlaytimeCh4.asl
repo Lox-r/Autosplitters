@@ -93,6 +93,15 @@ init
 
 		return name.Substring(0, under + 1);
 	});
+
+	vars.FNameToShortString3 = (Func<ulong, string>)(fName =>
+	{
+		string name = vars.FNameToString(fName);
+
+		int check = name.IndexOf('.');
+
+		return name.Substring(check + 1);
+	});
 }
 
 update
@@ -130,6 +139,7 @@ split
 	const string ItemFormat = "[{0}] {1} ({2})";
 	string setting = "";
 	
+	
 	if(vars.FNameToShortString2(current.AcknowledgedPawn) == "BP_PPPlayerCharacter_C_"){ 
 		for (int i = 0; i < current.ItemCount; i++)
 		{
@@ -151,18 +161,31 @@ split
 			}
 			
 			vars.Inventory[item] = used;
-			
-			// Debug. Comment out before release.
-			if (!string.IsNullOrEmpty(setting))
-			vars.Log(setting);
-		
-			if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting) && vars.splitstoComplete.Contains(setting)){
-				return true;
-				vars.splitstoComplete.Clear();
-			}
 		}
+		
+		if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting) && vars.splitstoComplete.Contains(setting)){
+			return true;
+			vars.splitstoComplete.Clear();
+		}
+		
 	}
+	
+	if(vars.FNameToShortString3(current.CheckpointID) != vars.FNameToShortString3(old.CheckpointID)){
+		setting = vars.FNameToShortString3(current.CheckpointID);
+	}
+	
+	if(setting == "[+] TopSecretVideo (1)"){
+		return true;
+	}
+	
+	// Debug. Comment out before release.
+	if (!string.IsNullOrEmpty(setting))
+	vars.Log(setting);
 
+	if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting) && vars.splitstoComplete.Contains(setting)){
+		return true;
+		vars.splitstoComplete.Clear();
+	}
 }
 
 isLoading
