@@ -1,5 +1,8 @@
-//Autostart,Autosplit and Load Removal
-//Made by Lox and TheDementedSalad
+// Poppy Playtime Ch4 Autosplitter and Load Remover
+// Supports Load Remover IGT (Soon.TM)
+// Splits for campaigns can be obtained from:
+// Script by TheDementedSalad & Lox
+
 state("ch4_pro-Win64-Shipping"){}
 state("ch4_pro-WinGDK-Shipping"){}
 
