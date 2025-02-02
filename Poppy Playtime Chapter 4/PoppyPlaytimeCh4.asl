@@ -42,9 +42,11 @@ init
 	
 	vars.Helper["isLoading"] = vars.Helper.Make<bool>(gSyncLoad);
 
-	vars.Helper["TransitionType"] = vars.Helper.Make<int>(gEngine, 0xB93);
+	vars.Helper["TransitionType"] = vars.Helper.Make<byte>(gEngine, 0xB93);
 	vars.Helper["Loading"] = vars.Helper.Make<byte>(gEngine, 0x1080, 0x38, 0x0, 0x30, 0x2E8, 0x328, 0x408);
-	
+
+	vars.Helper[""] = vars.Helper.Make<int>(gWorld, 0x30, );
+		
 	vars.Helper["Level"] = vars.Helper.MakeString(gEngine, 0xB98, 0x14);
 
 	vars.Helper["CheckpointID"] = vars.Helper.Make<ulong>(gEngine, 0xA58, 0x78, 0x830, 0x158, 0x34);
@@ -117,7 +119,8 @@ update
 	vars.Helper.Update();
 	vars.Helper.MapPointers();
 
-    if (old.TransitionType != current.TransitionType) vars.Log("Transition Type = : " + current.TransitionType);
+    if (old.TransitionType != current.TransitionType) vars.Log("Transition Type: " + current.TransitionType);
+	if (old.showHUD != current.showHUD) vars.Log("showHUD: " + current.showHUD);
 	
 	if(timer.CurrentPhase == TimerPhase.NotRunning)
 	{
