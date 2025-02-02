@@ -44,8 +44,6 @@ init
 
 	vars.Helper["TransitionType"] = vars.Helper.Make<byte>(gEngine, 0xB93);
 	vars.Helper["Loading"] = vars.Helper.Make<byte>(gEngine, 0x1080, 0x38, 0x0, 0x30, 0x2E8, 0x328, 0x408);
-
-	vars.Helper[""] = vars.Helper.Make<int>(gWorld, 0x30, );
 		
 	vars.Helper["Level"] = vars.Helper.MakeString(gEngine, 0xB98, 0x14);
 
@@ -198,7 +196,7 @@ split
 
 isLoading
 {
-	return current.isLoading || current.TransitionType == 1 || current.Loading != 3 || vars.FNameToShortString2(current.localPlayer) != "BP_PPPlayerController_C_";
+	return current.isLoading || current.TransitionType == 1 || vars.FNameToShortString2(current.localPlayer) != "BP_PPPlayerController_C_";
 }
 
 reset
