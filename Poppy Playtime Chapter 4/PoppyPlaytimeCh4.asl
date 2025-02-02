@@ -20,8 +20,6 @@ startup
 
 init
 {
-	vars.completedSplits = new List<byte>();
-	
 	switch (modules.First().ModuleMemorySize)
 	{
 		case (139485184):
