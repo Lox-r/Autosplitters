@@ -116,9 +116,6 @@ update
 	
 	vars.Helper.Update();
 	vars.Helper.MapPointers();
-
-    if (old.TransitionType != current.TransitionType) vars.Log("Transition Type: " + current.TransitionType);
-	if (old.showHUD != current.showHUD) vars.Log("showHUD: " + current.showHUD);
 	
 	if(timer.CurrentPhase == TimerPhase.NotRunning)
 	{
