@@ -15,7 +15,6 @@ startup
 	
 	vars.completedSplits = new HashSet<string>();
 	vars.Inventory = new Dictionary<ulong, int>();
-	vars.splitstoComplete = new HashSet<string>();
 }
 
 init
@@ -158,15 +157,13 @@ split
 			else
 			{
 				setting = string.Format(ItemFormat, '+', vars.FNameToShortString(item), '!');
-				vars.splitstoComplete.Add(setting);
 			}
 			
 			vars.Inventory[item] = used;
 		}
 		
-		if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting) && vars.splitstoComplete.Contains(setting)){
+		if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting)){
 			return true;
-			vars.splitstoComplete.Clear();
 		}
 		
 	}
@@ -183,9 +180,8 @@ split
 	if (!string.IsNullOrEmpty(setting))
 	vars.Log(setting);
 
-	if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting) && vars.splitstoComplete.Contains(setting)){
+	if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting)){
 		return true;
-		vars.splitstoComplete.Clear();
 	}
 }
 
