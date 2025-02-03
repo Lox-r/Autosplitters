@@ -15,6 +15,7 @@ startup
 	
 	vars.completedSplits = new HashSet<string>();
 	vars.Inventory = new Dictionary<ulong, int>();
+	vars.splitstoComplete = new HashSet<string>();
 }
 
 init
@@ -60,7 +61,6 @@ init
 	vars.Helper["Inventory"] = vars.Helper.Make<IntPtr>(gEngine, 0x1080, 0x38, 0x0, 0x30, 0x340, 0xAF8, 0x1B0 + 0x0);
 	
 	vars.Helper["ItemCount"] = vars.Helper.Make<uint>(gEngine, 0x1080, 0x38, 0x0, 0x30, 0x340, 0xAF8, 0x1B8);
-
 	
 	vars.FNameToString = (Func<ulong, string>)(fName =>
 	{
@@ -121,7 +121,7 @@ update
 
 	//print(current.ItemCount.ToString());
 	
-	//print(vars.FNameToShortString2(current.AcknowledgedPawn));
+	//print(vars.FNameToShortString3(current.FinalItem));
 }
 
 onStart
@@ -139,7 +139,6 @@ split
 	const string ItemFormat = "[{0}] {1} ({2})";
 	string setting = "";
 	
-	
 	if(vars.FNameToShortString2(current.AcknowledgedPawn) == "BP_PPPlayerCharacter_C_"){ 
 		for (int i = 0; i < current.ItemCount; i++)
 		{
@@ -152,27 +151,33 @@ split
 			{
 				if (oldUsed < used){
 					setting = string.Format(ItemFormat, '+', vars.FNameToShortString(item), used);
+					vars.splitstoComplete.Add(setting);
 				}
 			}
 			else
 			{
 				setting = string.Format(ItemFormat, '+', vars.FNameToShortString(item), '!');
+				vars.splitstoComplete.Add(setting);
 			}
 			
 			vars.Inventory[item] = used;
-		}
+			
+			// Debug. Comment out before release.
+			//if (!string.IsNullOrEmpty(setting))
+			//vars.Log(setting);
 		
-		if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting)){
-			return true;
+			if (settings.ContainsKey(setting) && settings[setting] && vars.completedSplits.Add(setting) && vars.splitstoComplete.Contains(setting)){
+				return true;
+				vars.splitstoComplete.Clear();
+			}
 		}
-		
 	}
 	
 	if(vars.FNameToShortString3(current.CheckpointID) != vars.FNameToShortString3(old.CheckpointID)){
 		setting = vars.FNameToShortString3(current.CheckpointID);
 	}
 	
-	if(setting == "[+] TopSecretVideo (1)"){
+	if(vars.FNameToShortString3(current.CheckpointID) == "Checkpoint.TheLabsEntrance.2" && current.ItemCount == old.ItemCount - 1){
 		return true;
 	}
 	
