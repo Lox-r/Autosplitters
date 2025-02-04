@@ -53,6 +53,7 @@
 			<Setting Id="[+] DoctorsDomain_BluekeyCard (!)"  Label="Blue Keycard (Doctor's Domain)" State="false"/>
 			<Setting Id="[+] GasMask (!)"  Label="Broken Gask Mask" State="false"/>
 			<Setting Id="[+] DoctorsDomainPSC_Keycard (!)"  Label="VSC Keycard" State="false"/>
+			<Setting Id="[+] DoctorsHeadquarters_OfficeKey (!)"  Label="Sawyer's Office Key" State="false"/>
 			<Setting Id="[+] OmniChip (!)"  Label="Omni-Chip" State="false"/>
 			<Setting Id="[+] OmniHand (!)"  Label="Omni-Red Hand" State="false"/>
 			<Setting Id="[+] Foundation_Explosive1 (!)"  Label="Explosive 1" State="false"/>
@@ -68,25 +69,30 @@
 			<Setting Id="[+] ToyGraveyard_Diary_02 (!)"  Label="Riley Journal: Entry 3" State="false"/>
 			<Setting Id="[+] ToyGraveyard_Diary_03 (!)"  Label="Riley Journal: Entry 4" State="false"/>
 			<Setting Id="[+] ToyGraveyard_Diary_04 (!)"  Label="Riley Journal: Entry 5" State="false"/>
+			<Setting Id="[+] CellBlocks_Observation1_Note (!)"  Label="Weekly Checkup: 1172" State="false"/>
 			<Setting Id="[+] CellBlocks_GuardNote1_Note (!)"  Label="Cole Journal: Entry 1" State="false"/>
 			<Setting Id="[+] CellBlocks_Observation2_Note (!)"  Label="Weekly Checkup: 1424" State="false"/>
 			<Setting Id="[+] CellBlocks_1166PrisonerProfile_Note (!)"  Label="Prisoner Profile, Experiment 1166" State="false"/>
+			<Setting Id="[+] CellBlocks_1163PrisonProfile_Note (!)"  Label="Prisoner Profile, Experiment 1163" State="false"/>
 			<Setting Id="[+] CellBlocks_GuardNote2_Note (!)"  Label="Cole Journal: Entry 2" State="false"/>
 			<Setting Id="[+] CellBlocks_GuardNote3_Note (!)"  Label="Cole Journal: Entry 3" State="false"/>
 			<Setting Id="[+] CellBlocks_GuardNote4_Note (!)"  Label="Cole Journal: Entry 4" State="false"/>
 			<Setting Id="[+] UtilityZone_ReconReport1_Note (!)"  Label="Reconnaissance Report: 12.15.04" State="false"/>
 			<Setting Id="[+] SafeHaven_JacksParents_Note (!)"  Label="A Cryptic Letter" State="false"/>
 			<Setting Id="[+] SafeHaven_SafeHavenProjectOverview (!)"  Label="Project Overview: Safe Haven" State="false"/>
+			<Setting Id="[+] WasteWaterPlant_Subject1322C_Note (!)"  Label="Subject 1322C Report" State="false"/>
 			<Setting Id="[+] SafeHaven_ReconReport2_Note (!)"  Label="Reconnaissance Report: 01.10.05" State="false"/>
 			<Setting Id="[+] NoMansLand_Propoganda_Notes (!)"  Label="Propaganda Flier" State="false"/>
 			<Setting Id="[+] DoctorsDomain_MissionStatement_Notes (!)"  Label="Secondary Lab Mission Statement" State="false"/>
 			<Setting Id="[+] DoctorsDomain_HSKT_Doc (!)"  Label="Secondary Lab Instructions" State="false"/>
+			<Setting Id="[+] DoctorsHQ_HiddenDoc1_Notes (!)"  Label="Young Geniuses Program Removal Letter" State="false"/>
 			<Setting Id="[+] SafeHaven_UntitledPoem_Note (!)"  Label="An Untitled Poem" State="false"/>
 			<Setting Id="[+] Foundation_AccelerantNote (!)"  Label="Foundation Operator Note" State="false"/>
 		</Setting>
 		<Setting Id="Videos"  Label="Collected VHS Tapes" State="false">
 			<Setting Id="[+] FlareGunSafetyVideo (!)"  Label="Flare Hand Safety Video" State="false"/>
 			<Setting Id="[+] BreakTimeVHSTape (!)"  Label="Break Time" State="false"/>
+			<Setting Id="[+] PrisonCellBlock_VHS_WardenOffice (!)"  Label="Warden Office 8/8/1995" State="false"/>
 			<Setting Id="[+] TheDoctorVHSTape (!)"  Label="The Doctor" State="false"/>
 			<Setting Id="[+] StellaTape (!)"  Label="Stella Greyber Project Audit" State="false"/>
 			<Setting Id="[+] TheaterIncidentVHSTape (!)"  Label="'93 Theater Incident" State="false"/>
@@ -95,6 +101,7 @@
 			<Setting Id="[+] DoeyKevinTape (!)"  Label="1322 Report: Kevin" State="false"/>
 			<Setting Id="[+] CivilWar1VHSTape (!)"  Label="Security Feed 02.09.01" State="false"/>
 			<Setting Id="[+] FixedExperiment1354Tape (!)"  Label="Experiment #1354" State="false"/>
+			<Setting Id="[+] DoctorPrototypeVHSTape (!)"  Label="Time" State="false"/>
 			<Setting Id="[+] ManagementRichTape (!)"  Label="Management: Rich" State="false"/>
 			<Setting Id="[+] 1322Report:Jack (!)"  Label="1322 Report: Jack" State="false"/>
 			<Setting Id="[+] CivilWar2Video (!)"  Label="A Reminder" State="false"/>
@@ -103,4 +110,3 @@
 			<Setting Id="FinalSplit"  Label="Final Split (Always Active)" State="false"/>
 	</Setting>
 </Settings>
-
