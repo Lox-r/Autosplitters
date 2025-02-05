@@ -41,7 +41,9 @@ init
 	vars.Helper["isLoading"] = vars.Helper.Make<bool>(gSyncLoad);
 
 	vars.Helper["TransitionType"] = vars.Helper.Make<byte>(gEngine, 0xB93);
-	vars.Helper["Loading"] = vars.Helper.Make<byte>(gEngine, 0x1080, 0x38, 0x0, 0x30, 0x2E8, 0x328, 0x408);
+	
+	vars.Helper["GameLoading"] = vars.Helper.Make<byte>(gEngine, 0x1080, 0x108, 0x38, 0x50, 0x298, 0x2C8, 0x80);
+	vars.Helper["GameLoading"].FailAction = MemoryWatcher.ReadFailAction.SetZeroOrNull;
 		
 	vars.Helper["Level"] = vars.Helper.MakeString(gEngine, 0xB98, 0x14);
 
@@ -61,6 +63,9 @@ init
 	vars.Helper["Inventory"] = vars.Helper.Make<IntPtr>(gEngine, 0x1080, 0x38, 0x0, 0x30, 0x340, 0xAF8, 0x1B0 + 0x0);
 	
 	vars.Helper["ItemCount"] = vars.Helper.Make<uint>(gEngine, 0x1080, 0x38, 0x0, 0x30, 0x340, 0xAF8, 0x1B8);
+	
+	vars.Helper["FinalItem"] = vars.Helper.Make<ulong>(gEngine, 0x1080, 0x38, 0x0, 0x30, 0x340, 0xAF8, 0x1B0, 0x3E8, 0x78);
+
 	
 	vars.FNameToString = (Func<ulong, string>)(fName =>
 	{
@@ -192,7 +197,7 @@ split
 
 isLoading
 {
-	return current.isLoading || current.TransitionType == 1 || vars.FNameToShortString2(current.localPlayer) != "BP_PPPlayerController_C_";
+	return current.isLoading || current.TransitionType == 1 || vars.FNameToShortString2(current.localPlayer) != "BP_PPPlayerController_C_" || current.GameLoading == 1;
 }
 
 reset
