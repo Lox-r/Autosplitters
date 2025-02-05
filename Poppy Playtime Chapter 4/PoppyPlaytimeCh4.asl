@@ -1,8 +1,8 @@
 // Poppy Playtime Ch4 Autosplitter and Load Remover
 // Supports Load Remover IGT (Soon.TM)
 // Splits for campaigns can be obtained from:
-// Pointers, Item/Checkpoint Autosplits by TheDementedSalad
-// Load/Pause Removal by Lox
+// Pointers, Item/Checkpoint Autosplits & Load Removal by TheDementedSalad
+// Pause/Inventory Removal by Lox
 
 state("ch4_pro-Win64-Shipping"){}
 state("ch4_pro-WinGDK-Shipping"){}
