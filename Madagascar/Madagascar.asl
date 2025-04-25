@@ -12,16 +12,8 @@ startup
 {
 	vars.CompletedSplits = new HashSet<string>();
 
-	settings.Add("Marty's Escape", true);
-	settings.Add("N.Y. Street Chase", true);
-	settings.Add("Penguin Mutiny", true);
-	settings.Add("Mysterious Jungle", true);
-	settings.Add("Save TheLemurs", true);
-	settings.Add("Jungle Banquet", true);
-	settings.Add("Coming of Age", true);
-	settings.Add("Back to the Beach", true);
-	settings.Add("Marty to the Rescue", true);
-    settings.Add("Final Battle", true);
+    settings.Add("Final_Battle", true, "Final Battle");
+	settings.SetToolTip("Final_Battle", "Split on the Last Hit");
 }
 
 init
@@ -64,63 +56,9 @@ update
 
 split
 {	
-	if (settings["Marty's Escape"] && !vars.CompletedSplits.Contains("Marty's Escape") && current.levelUnlocked == 1)
+	if (settings["Final_Battle"] && !vars.CompletedSplits.Contains("Final_Battle") && current.bossHealth == 0 && old.bossHealth > 0 && current.level == 11 && vars.thirdBossPhase == true)
 	{
-		vars.CompletedSplits.Add("Marty's Escape");
-		return true;
-	}
-
-	if (settings["N.Y. Street Chase"] && !vars.CompletedSplits.Contains("N.Y. Street Chase") && current.levelUnlocked == 2)
-	{
-		vars.CompletedSplits.Add("N.Y. Street Chase");
-		return true;
-	}
-
-	if (settings["Penguin Mutiny"] && !vars.CompletedSplits.Contains("Penguin Mutiny") && current.levelUnlocked == 3)
-	{
-		vars.CompletedSplits.Add("Penguin Mutiny");
-		return true;
-	}
-
-	if (settings["Mysterious Jungle"] && !vars.CompletedSplits.Contains("Mysterious Jungle") && current.levelUnlocked == 4)
-	{
-		vars.CompletedSplits.Add("Mysterious Jungle");
-		return true;
-	}
-
-	if (settings["Save TheLemurs"] && !vars.CompletedSplits.Contains("Save TheLemurs") && current.levelUnlocked == 5)
-	{
-		vars.CompletedSplits.Add("Save TheLemurs");
-		return true;
-	}
-
-	if (settings["Jungle Banquet"] && !vars.CompletedSplits.Contains("Jungle Banquet") && current.levelUnlocked == 6)
-	{
-		vars.CompletedSplits.Add("Jungle Banquet");
-		return true;
-	}
-
-	if (settings["Coming of Age"] && !vars.CompletedSplits.Contains("Coming of Age") && current.levelUnlocked == 7)
-	{
-		vars.CompletedSplits.Add("Coming of Age");
-		return true;
-	}
-
-	if (settings["Back to the Beach"] && !vars.CompletedSplits.Contains("Back to the Beach") && current.levelUnlocked == 8)
-	{
-		vars.CompletedSplits.Add("Back to the Beach");
-		return true;
-	}
-
-	if (settings["Marty to the Rescue"] && !vars.CompletedSplits.Contains("Marty to the Rescue") && current.levelUnlocked == 9)
-	{
-		vars.CompletedSplits.Add("Marty to the Rescue");
-		return true;
-	}
-
-	if (settings["Final Battle"] && !vars.CompletedSplits.Contains("Final Battle") && current.bossHealth == 0 && old.bossHealth > 0 && current.level == 11 && vars.thirdBossPhase == true)
-	{
-		vars.CompletedSplits.Add("Final Battle");
+		vars.CompletedSplits.Add("Final_Battle");
 		return true;
 	}
 }
