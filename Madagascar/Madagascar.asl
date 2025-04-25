@@ -12,8 +12,8 @@ startup
 {
 	vars.CompletedSplits = new HashSet<string>();
 
-    settings.Add("Final_Battle", true, "Final Battle");
-	settings.SetToolTip("Final_Battle", "Split on the Last Hit");
+    settings.Add("Final Battle", true);
+	settings.SetToolTip("Final Battle", "Split on the Last Hit");
 }
 
 init
@@ -56,9 +56,9 @@ update
 
 split
 {	
-	if (settings["Final_Battle"] && !vars.CompletedSplits.Contains("Final_Battle") && current.bossHealth == 0 && old.bossHealth > 0 && current.level == 11 && vars.thirdBossPhase == true)
+	if (settings["Final Battle"] && !vars.CompletedSplits.Contains("Final Battle") && current.bossHealth == 0 && old.bossHealth > 0 && current.level == 11 && vars.thirdBossPhase == true)
 	{
-		vars.CompletedSplits.Add("Final_Battle");
+		vars.CompletedSplits.Add("Final Battle");
 		return true;
 	}
 }
