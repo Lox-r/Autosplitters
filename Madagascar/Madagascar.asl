@@ -6,6 +6,7 @@ state("Game")
 	byte levelUnlocked: 0x21F9AC, 0x368, 0x1C; //It starts in 0, it adds 1 each time you complete a level and the next one unlocks. This happens in the load screen at the end of each level
 	byte movie: "binkw32.dll", 0x54A9C; //1 When playing an outside video file (eg. the initial cutscene)
 	float bossHealth: 0x21F9AC, 0x678, 0x10, 0x1C; //Final boss health
+	int bossTwoHealth: 0x21F9AC, 0x678, 0x10, 0x1C; //Final boss health for second Phase
 }
 
 startup
@@ -39,11 +40,17 @@ update
 	if (settings["Final Battle"] && old.bossHealth == 0 && current.bossHealth == 20)
 	{
 		vars.thirdBossPhase = true;
+	}else if (vars.thirdBossPhase == true && current.bossTwoHealth == 2){
+		vars.thirdBossPhase = false;
 	}
 
 	if(current.bossHealth != old.bossHealth){
 		print ("bossHealth = " + current.bossHealth);
 	}
+
+	if (current.bossTwoHealth != old.bossTwoHealth){
+		print ("bossTwoHealth: " + current.bossTwoHealth);
+	};
 	
 	if(current.load != old.load){
 		print ("load = " + current.load);
@@ -56,9 +63,8 @@ update
 
 split
 {	
-	if (settings["Final Battle"] && !vars.CompletedSplits.Contains("Final Battle") && current.bossHealth == 0 && old.bossHealth > 0 && current.level == 11 && vars.thirdBossPhase == true)
+	if (settings["Final Battle"] && current.bossHealth == 0 && old.bossHealth > 0 && current.level == 11 && vars.thirdBossPhase == true)
 	{
-		vars.CompletedSplits.Add("Final Battle");
 		return true;
 	}
 }
