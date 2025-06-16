@@ -1,10 +1,8 @@
-//Autosplit, Autostart and Loadremoval by Lox and Arkham
-//Huge thank you to Ero For Helping oput with the LoadingScreen
-state("FNAF_SOTM-Win64-Shipping") {}
+state("FNAF_SOTM-Win64-Shipping"){}
 
 startup
 {
-  Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
+    Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
 	vars.Helper.GameName = "Five Nights At Freddy's: Secret of The Mimic";
 	vars.Helper.AlertLoadless();
 
@@ -35,16 +33,16 @@ init
 	IntPtr fNames = vars.Helper.ScanRel(3, "48 8d 05 ???????? eb ?? 48 8d 0d ???????? e8 ???????? c6 05");
 	IntPtr gSyncLoadCount = vars.Helper.ScanRel(5, "89 43 60 8B 05 ?? ?? ?? ??");
 
-if (gWorld == IntPtr.Zero || gEngine == IntPtr.Zero || fNames == IntPtr.Zero)
+    if (gWorld == IntPtr.Zero || gEngine == IntPtr.Zero || fNames == IntPtr.Zero)
 	{
 		const string Msg = "Not all required addresses could be found by scanning.";
 		throw new Exception(Msg);
 	}
 
 	if (namePoolData == IntPtr.Zero || gEngine == IntPtr.Zero)
-  {
-     throw new InvalidOperationException("Not all signatures resolved.");
-  }
+    {
+        throw new InvalidOperationException("Not all signatures resolved.");
+    }
 
     vars.Helper["GWorldName"] = vars.Helper.Make<ulong>(gWorld, 0x18);
 
@@ -150,12 +148,6 @@ update
     vars.Helper.Update();
 	vars.Helper.MapPointers();
 
-	if (current.LoadingScreen == 0 && old.LoadingScreen == 1 || old.LoadingScreen == 2){
-		vars.StartFlag = true;
-	}else if (old.LoadingScreen == 0 && current.LoadingScreen == 1){
-		vars.StartFlag = false;
-	}
-
     var world = vars.FNameToString(current.GWorldName);
 	if (!string.IsNullOrEmpty(world) && world != "None") current.World = world;
 	if (old.World != current.World) vars.Log("World: " + current.World);
@@ -188,9 +180,7 @@ start
 
 isLoading
 {
-	if (settings["Loads"] && settings["paused"])
-	{
-			if (current.TransitionType == 1)
+			if (current.TransitionType == 1 && settings["paused"])
 			{
 				return true;
 			}else if (current.World == "MAP_MainMenu" || current.LoadingState == 1){
@@ -198,7 +188,6 @@ isLoading
 			}else{
 				return false;
 			}
-	}
 }
 
 split
