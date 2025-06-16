@@ -20,24 +20,10 @@ startup
 
 init
 {
-	switch (modules.First().ModuleMemorySize)
-	{
-        case (97775616):
-			version = "SteamRelease";
-			break;
-	}
-
     IntPtr namePoolData = vars.Helper.ScanRel(13, "89 5C 24 ?? 89 44 24 ?? 74 ?? 48 8D 15");
 	IntPtr gWorld = vars.Helper.ScanRel(3, "48 8B 05 ???????? 48 3B C? 48 0F 44 C? 48 89 05 ???????? E8");
 	IntPtr gEngine = vars.Helper.ScanRel(3, "48 89 05 ???????? 48 85 c9 74 ?? e8 ???????? 48 8d 4d");
-	IntPtr fNames = vars.Helper.ScanRel(3, "48 8d 05 ???????? eb ?? 48 8d 0d ???????? e8 ???????? c6 05");
 	IntPtr gSyncLoadCount = vars.Helper.ScanRel(5, "89 43 60 8B 05 ?? ?? ?? ??");
-
-    if (gWorld == IntPtr.Zero || gEngine == IntPtr.Zero || fNames == IntPtr.Zero)
-	{
-		const string Msg = "Not all required addresses could be found by scanning.";
-		throw new Exception(Msg);
-	}
 
 	if (namePoolData == IntPtr.Zero || gEngine == IntPtr.Zero)
     {
@@ -58,22 +44,6 @@ init
 	// vars.Helper["PlayerState"] = vars.Helper.Make<bool>(gEngine, 0xD28, 0x38, 0x0, 0x30, 0x2A0, 0x6C8);
 	// GEngine.LocalPlayers[0].PlayerController.AcknowledgedPawn.StateName
 	vars.Helper["StateName"] = vars.Helper.Make<ulong>(gEngine, 0xD28, 0x38, 0x0, 0x30, 0x248);
-
-    vars.FNameToString = (Func<ulong, string>)(fName =>
-	{
-		var nameIdx = (fName & 0x000000000000FFFF) >> 0x00;
-		var chunkIdx = (fName & 0x00000000FFFF0000) >> 0x10;
-		var number = (fName & 0xFFFFFFFF00000000) >> 0x20;
-
-		// IntPtr chunk = vars.Helper.Read<IntPtr>(fNames + 0x10 + (int)chunkIdx * 0x8);
-		IntPtr chunk = vars.Helper.Read<IntPtr>(fNames + 0x10 + (int)chunkIdx * 0x8);
-		IntPtr entry = chunk + (int)nameIdx * sizeof(short);
-
-		int length = vars.Helper.Read<short>(entry) >> 6;
-		string name = vars.Helper.ReadString(length, ReadStringType.UTF8, entry + sizeof(short));
-
-		return number == 0 ? name : name + "_" + number;
-	});
 
 	// NamePool stuff
     const int FNameBlockOffsetBits = 16;
@@ -129,9 +99,6 @@ init
 
 update
 {
-	//Uncomment debug information in the event of an update.
-	// print(modules.First().ModuleMemorySize.ToString());
-
 	IntPtr gm;
     if (!vars.Helper.TryRead<IntPtr>(out gm, vars.GameManager))
     {
@@ -180,14 +147,15 @@ start
 
 isLoading
 {
-			if (current.TransitionType == 1 && settings["paused"])
-			{
-				return true;
-			}else if (current.World == "MAP_MainMenu" || current.LoadingState == 1){
-				return true;
-			}else{
-				return false;
-			}
+    return current.LoadingState == 1  || current.World == "Map_MainMenu";
+
+    if (settings["paused"])
+    {
+        if (current.TransitionType == 1)
+        {
+            return true;
+        }
+    }
 }
 
 split
