@@ -4,6 +4,7 @@ startup
 {
     Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
     vars.Helper.GameName = "Five Nights At Freddy's: Secret of The Mimic";
+    vars.Helper.StartFileLogger("Components/SOTM.Log");
     vars.Helper.AlertLoadless();
 
     dynamic[,] _settings =
