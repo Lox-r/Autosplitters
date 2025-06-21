@@ -4,19 +4,77 @@ startup
 {
     Assembly.Load(File.ReadAllBytes("Components/asl-help")).CreateInstance("Basic");
     vars.Helper.GameName = "Five Nights At Freddy's: Secret of The Mimic";
-    vars.Helper.StartFileLogger("Components/SOTM.Log");
     vars.Helper.AlertLoadless();
 
     dynamic[,] _settings =
     {
         { "split", true, "Splitting", null },
             { "MAP_Outro_InteractiveCredits_Infinite", true, "Final Split - Works on all 3 Endings", "split" },
+        { "text", false, "Display Game Info On A Text Component", null },
+            { "Remove", false, "Remove Text Component On Exit", "text" },
+            {"Seen", false, "Show If The Player Is Seen By Ai", "text"},
         { "loads", true, "Load Removal", null },
             { "pause", true, "Pause when on the Loads", "loads" },
     };
 
     vars.Helper.Settings.Create(_settings);
     vars.CompletedSplits = new HashSet<string>();
+
+    vars.lcCache = new Dictionary<string, LiveSplit.UI.Components.ILayoutComponent>();
+
+    vars.Watch = (Action<IDictionary<string, object>, IDictionary<string, object>, string>)((oldLookup, currentLookup, key) =>
+    {
+        var currentValue = currentLookup.ContainsKey(key) ? (currentLookup[key] ?? "(null)") : null;
+        var oldValue = oldLookup.ContainsKey(key) ? (oldLookup[key] ?? "(null)") : null;
+
+        if (oldValue != null && currentValue != null && !oldValue.Equals(currentValue)) {
+            vars.Log(key + ": " + oldValue + " -> " + currentValue);
+        }
+
+        if (oldValue == null && currentValue != null) {
+            vars.Log(key + ": " + currentValue);
+        }
+    });
+
+    vars.SetText = (Action<string, object>)((text1, text2) =>
+    {
+        const string FileName = "LiveSplit.Text.dll";
+        LiveSplit.UI.Components.ILayoutComponent lc;
+
+        if (!vars.lcCache.TryGetValue(text1, out lc))
+        {
+            lc = timer.Layout.LayoutComponents.Reverse().Cast<dynamic>()
+                .FirstOrDefault(llc => llc.Path.EndsWith(FileName) && llc.Component.Settings.Text1 == text1)
+                ?? LiveSplit.UI.Components.ComponentManager.LoadLayoutComponent(FileName, timer);
+
+            vars.lcCache.Add(text1, lc);
+        }
+
+        if (!timer.Layout.LayoutComponents.Contains(lc))
+            timer.Layout.LayoutComponents.Add(lc);
+
+        dynamic tc = lc.Component;
+        tc.Settings.Text1 = text1;
+        tc.Settings.Text2 = text2.ToString();
+    });
+
+        vars.RemoveText = (Action<string>)(text1 =>
+    {
+        LiveSplit.UI.Components.ILayoutComponent lc;
+
+        if (vars.lcCache.TryGetValue(text1, out lc))
+        {
+            timer.Layout.LayoutComponents.Remove(lc);
+            vars.lcCache.Remove(text1);
+        }
+    });
+
+        vars.RemoveAllTexts = (Action)(() =>
+    {
+        foreach (var lc in vars.lcCache.Values)
+            timer.Layout.LayoutComponents.Remove(lc);
+        vars.lcCache.Clear();
+    });
 }
 
 init
@@ -44,10 +102,16 @@ init
     vars.Helper["ShowingReticle"] = vars.Helper.Make<bool>(gEngine, 0xD28, 0x38, 0x0, 0x30, 0x2A0, 0x69A);
 
     // GEngine->GameInstance->LocalPlayers[0]->PlayerController->AcknowledgedPawn->HasInteractionStarted
-    // vars.Helper["PlayerState"] = vars.Helper.Make<bool>(gEngine, 0xD28, 0x38, 0x0, 0x30, 0x2A0, 0x6C8);
+    vars.Helper["HasInterctionStarted"] = vars.Helper.Make<bool>(gEngine, 0xD28, 0x38, 0x0, 0x30, 0x2A0, 0x6C8);
 
     // GEngine->GameInstance->LocalPlayers[0]->PlayerController->AcknowledgedPawn->StateName
     vars.Helper["StateName"] = vars.Helper.Make<ulong>(gEngine, 0xD28, 0x38, 0x0, 0x30, 0x248);
+
+    // GWorld->AuthotityGameMode->GameState
+    vars.Helper["GameState"] = vars.Helper.MakeString(gWorld, 0x118, 0x280);
+
+    // GEngine->GameInstance->LocalPlayers[0]->PlayerController->AcknowledgedPawn->IsSeenByAi
+    vars.Helper["IsSeen"] = vars.Helper.Make<bool>(gEngine, 0xD28, 0x38, 0x0, 0x30, 0x2A0, 0x60C);
 
     // NamePool stuff
     const int FNameBlockOffsetBits = 16;
@@ -99,6 +163,14 @@ init
     });
 
     vars.GameManager = IntPtr.Zero;
+
+    vars.SetTextIfEnabled = (Action<string, object>)((text1, text2) =>
+    {
+        if (settings[text1])            
+            vars.SetText(text1, text2); 
+        else
+            vars.RemoveText(text1);     
+    });
 }
 
 update
@@ -124,6 +196,11 @@ update
         vars.Log("LoadingState: " + old.LoadingState + " -> " + current.LoadingState);
     }
 
+    if (old.GameState != current.GameState)
+    {
+        vars.Log("GameState: " + old.GameState + " -> " + current.GameState);
+    }
+
     if (old.StateName != current.StateName)
     {
         vars.Log("StateName: " + old.StateName + " -> " + current.StateName);
@@ -133,6 +210,10 @@ update
     {
         vars.Log("ShowingReticle: " + old.ShowingReticle + " -> " + current.ShowingReticle);
     }
+
+    vars.Watch(old, current, "IsSeen");
+
+    vars.SetTextIfEnabled("Seen", current.IsSeen);
 }
 
 start
@@ -160,4 +241,6 @@ isLoading
 exit
 {
     timer.IsGameTimePaused = true;
+    if (settings["Remove"])
+    vars.RemoveAllTexts();
 }
