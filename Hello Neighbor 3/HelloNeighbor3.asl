@@ -1,5 +1,6 @@
 // Script Made by Lox and Menzo
 // Auto start, Auto split and Auto reset
+// Supports Prototype 1 & 2
 state("HelloNeighbor3-Win64-Shipping"){}
 
 startup 
@@ -11,7 +12,8 @@ startup
     dynamic[,] _settings =
     {
         { "EndSplit", true, "Speedrun Category - End Splits", null },
-            { "EndTrigger", true, "Complete the Game (Escaped)", "EndSplit" },        
+            { "EndTriggerP1", true, "Complete the Game (Escaped - Prototype 1)", "EndSplit" },
+            { "EndTriggerP2", true, "Complete the Game (Escaped - Prototype 2)", "EndSplit" },
     };
 
     vars.Helper.Settings.Create(_settings);
@@ -27,6 +29,9 @@ init
     {
         case (143495168):
             version = "Prototype 1";
+            break;
+        case (143896576):
+            version = "Prototype 2";
             break;
     }
 
@@ -58,8 +63,16 @@ init
     
     var Tool = vars.Uhara.CreateTool("UnrealEngine", "Events");
     
-    IntPtr EndTriggerPtr = Tool.FunctionFlag("WBP_GameResultsEscaped_C", "WBP_GameResultsEscaped_C", "OnInitialized");
-    vars.Resolver.Watch<ulong>("EndTrigger", EndTriggerPtr);
+    if (version == "Prototype 1")
+    {
+        IntPtr EndTriggerPtr = Tool.FunctionFlag("WBP_GameResultsEscaped_C", "WBP_GameResultsEscaped_C", "OnInitialized");
+        vars.Resolver.Watch<ulong>("EndTriggerP1", EndTriggerPtr);
+    }
+    else if (version == "Prototype 2")
+    {
+        IntPtr EndTriggerPtr = Tool.FunctionFlag("WBP_GameEnding_Successful_C", "WBP_GameEnding_Successful_C", "OnInitialized");
+        vars.Resolver.Watch<ulong>("EndTriggerP2", EndTriggerPtr);
+    }
 }
 
 update
@@ -78,19 +91,47 @@ update
 
 start
 {
-    return current.World == "MainMap_02_P" && current.SyncLoadCount == 0;
+    if (version == "Prototype 1")
+    {
+        return current.World == "MainMap_02_P" && current.SyncLoadCount == 0;
+    }
+    else if (version == "Prototype 2")
+    {
+        return current.World == "MainMap_03_P" && current.SyncLoadCount == 0;
+    }
+    
+    return false;
 }
 
 reset
 {
-    return current.World == "HN3_MainMenu_P" && old.World == "MainMap_02_P";
+    if (version == "Prototype 1")
+    {
+        return current.World == "HN3_MainMenu_P" && old.World == "MainMap_02_P";
+    }
+    else if (version == "Prototype 2")
+    {
+        return current.World == "HN3_MainMenu_P" && old.World == "MainMap_03_P";
+    }
+    
+    return false;
 }
 
 split
 {
-    if (settings["EndTrigger"] && current.EndTrigger != old.EndTrigger && current.EndTrigger != 0)
+    if (version == "Prototype 1")
     {
-        return true;
+        if (settings["EndTriggerP1"] && current.EndTriggerP1 != old.EndTriggerP1 && current.EndTriggerP1 != 0)
+        {
+            return true;
+        }
+    }
+    else if (version == "Prototype 2")
+    {
+        if (settings["EndTriggerP2"] && current.EndTriggerP2 != old.EndTriggerP2 && current.EndTriggerP2 != 0)
+        {
+            return true;
+        }
     }
     
     return false;
