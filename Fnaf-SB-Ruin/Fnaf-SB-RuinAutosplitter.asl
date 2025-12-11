@@ -251,6 +251,7 @@ init
     vars.InElevatorLoad = false;
     vars.DoorOpenTime = 0;
     vars.WaitingForDoors = false;
+    vars.StartingMopBots = 0;
     vars.CurrentMopBots = 0;
 
     vars.interactibleName = "";
@@ -285,6 +286,7 @@ init
         //Used to keep certain splits from repeating (reset)
         vars.CompletedSplits.Clear();
 
+        vars.StartingMopBots = vars.watchers["CollectedCautionBots"].Current;
         vars.CurrentMopBots = 0;
         vars.InElevatorLoad = false;
         vars.DoorOpenTime = 0;
@@ -314,7 +316,6 @@ update
     var autosave = vars.FNameToString(current.LastAutoSaveID);
     if (!string.IsNullOrEmpty(autosave) && autosave != "None") current.AutoSaveID = autosave;
     
-    //print(vars.GetNameFromFName(vars.watchers["closestInteractibleFName"].Current));
     string currentName = vars.GetNameFromFName(vars.watchers["closestInteractibleFName"].Current);
     string currInteract = (string)vars.interactibleName;
     IntPtr currentAddress = vars.watchers["closestInteractibleAddress"].Current;
@@ -331,15 +332,12 @@ update
     }
 
     vars.SetText("MopBots:", vars.watchers["CollectedCautionBots"].Current);
+    vars.CurrentMopBots = vars.watchers["CollectedCautionBots"].Current;
 
     if ((current.AutoSaveID == "autosave_1_0") && (old.AutoSaveID != "autosave_1_0")) {
         vars.resetVariables();
         print("Reset variables");
     }
-
-    //print("X=" + vars.watchers["pos"].Current.X);
-    //print("Y=" + vars.watchers["pos"].Current.Y);
-    //print("Z=" + vars.watchers["pos"].Current.Z);
 }
 
 start
@@ -452,15 +450,12 @@ split
     }
 
     // MopBot Splits
-    if (settings["CollectedCautionBots"] && !vars.CompletedSplits.Contains("MopBot" + (vars.CurrentMopBots + 1)))
+    if (settings["CollectedCautionBots"] && !vars.CompletedSplits.Contains("MopBot" + (vars.CurrentMopBots - vars.StartingMopBots)))
     {
         var oldName = vars.GetNameFromFName(vars.watchers["closestInteractibleFName"].Old);
         var newName = vars.GetNameFromFName(vars.watchers["closestInteractibleFName"].Current);
-        if ((oldName.Contains("AR_HazardBot") || (oldName.Contains("AR_Barrier"))
-           && newName.Contains("None")
-           && (vars.watchers["CollectedCautionBots"].Current > vars.watchers["CollectedCautionBots"].Old))) {
-            vars.CurrentMopBots = vars.CurrentMopBots + 1;
-            vars.CompletedSplits.Add("MopBot" + vars.CurrentMopBots);
+        if ((oldName.Contains("AR_HazardBot") || oldName.Contains("AR_Barrier") || oldName.Contains("CautionBot_DLC")) && newName.Contains("None")) {
+            vars.CompletedSplits.Add("MopBot" + (vars.CurrentMopBots - vars.StartingMopBots));
             return true;
         }
     }
@@ -468,12 +463,9 @@ split
 
 isLoading
 {
-    if (vars.watchers["pos"].Current.Y == 0 && vars.arcade == "N/A"){
-        if (!vars.onMenu){
-            print("Stop Timer On Menu");
-        }
+    if (vars.watchers["pos"].Current.Y == 0 && vars.arcade == "N/A") {
         vars.onMenu = true;
-    } else if (current.World != "MAP_Title" || vars.arcade != "N/A"){
+    } else if (current.World != "MAP_Title" || vars.arcade != "N/A") {
         vars.onMenu = false;
     }
     if (vars.onMenu){
