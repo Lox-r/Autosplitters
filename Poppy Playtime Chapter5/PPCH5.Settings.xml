@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+	<Setting Id="PPCH5" Label="Poppy Playtime Chapter 5 Settings" State="true">
+		<Setting Id="Checkpoints" Label="Checkpoint Splits" State="true">
+			<Setting Id="LevelStreaming.03_ToyMorgue.0" Label="Huggy Chase/Elevator Fall" State="true"/>
+			<Setting Id="LevelStreaming.04_CharnelPit.0" Label="Morgue/Enter Giblet's Home" State="true"/>
+			<Setting Id="LevelStreaming.05_LabsRAD.0" Label="R&amp;D/Enter Research &amp; Development" State="true"/>
+			<Setting Id="LevelStreaming.05_LabsRAD.9" Label="R&amp;D/Provide Chum Power" State="true"/>
+			<Setting Id="LevelStreaming.05_LabsRAD.12" Label="R&amp;D/Exit Gel Cleaning Station" State="true"/>
+			<Setting Id="LevelStreaming.06_Conditioning.0" Label="R&amp;D/Eaten by Chum" State="true"/>
+			<Setting Id="LevelStreaming.06_Conditioning.6" Label="Conditioning/Enter Memory 1" State="true"/>
+			<Setting Id="LevelStreaming.06_Conditioning.7" Label="Conditioning/Enter Memory 2" State="true"/>
+			<Setting Id="LevelStreaming.06_Conditioning.8" Label="Conditioning/Enter Memory 3" State="true"/>
+			<Setting Id="LevelStreaming.07_HuggyChase.0" Label="Conditioning/Leave" State="true"/>
+			<Setting Id="LevelStreaming.07_HuggyChase.2" Label="Huggy Boss Fight/Enter Arena" State="true"/>
+			<Setting Id="LevelStreaming.08_SweetStreet.0" Label="Huggy Boss Fight/Exit Arena" State="true"/>
+			<Setting Id="LevelStreaming.08_SweetStreet.1" Label="Sweet Street/Arrive at Playground 1" State="true"/>
+			<Setting Id="LevelStreaming.09_Dollhouse.0" Label="Dollhouse/Kidnapped by Lily" State="true"/>
+			<Setting Id="LevelStreaming.09_Dollhouse.8" Label="Dollhouse/Lights Out" State="true"/>
+			<Setting Id="LevelStreaming.10_DollhouseEscape.0" Label="Tea Time/Start of Tea Party" State="true"/>
+			<Setting Id="LevelStreaming.11_Reanimation.0" Label="Tea Time/Exit from Lily Chase" State="true"/>
+			<Setting Id="LevelStreaming.12_Train.0" Label="Train/Exit from the Grand Stitchery" State="true"/>
+			<Setting Id="LevelStreaming.12_Train.7" Label="Train/Jump from Train" State="true"/>
+		</Setting>
+		<Setting Id="Items" Label="Items" State="true">
+			<Setting Id="RecyclingReclamation" Label="Recycling &amp; Reclamation" State="true">
+				<Setting Id="ID_Glowby_C" Label="Glowby" State="false" />
+				<Setting Id="ID_Key_Level03_DispatchRoomKey_C" Label="Master Keys" State="false" />
+			</Setting>
+			<Setting Id="TheBoilers" Label="The Boilers" State="true">
+				<Setting Id="ID_Equipment_GrabPack_C" Label="Grabpack" State="false" />
+				<Setting Id="ID_PressurizedHand_C" Label="Pressure Hand" State="false" />
+			</Setting>
+			<Setting Id="ResearchDevelopment" Label="Research &amp; Development" State="true">
+				<!-- <Setting Id="ID_BackupPlan_C" Label="Backup Plan" State="false" /> SHould be removed but also broken
+				<Setting Id="ID_MagnetHandUpgrade_C" Label="Magnet Hand Upgrade" State="false" /> -->
+			<Setting Id="ID_HookHand_C" Label="EMU Cuffs" State="false" />
+		</Setting>
+		<!--<Setting Id="Testing" Label="Testing" State="true">
+			<Setting Id="ID_ConductiveHand_C" Label="Conductive Hand" State="false" />  Broken
+		</Setting> -->
+		<Setting Id="MiscItems" Label="Miscellaneous" State="true">
+			<Setting Id="ID_Key_Level09_BasementKey_C" Label="Dollhouse Confinement Key" State="false" />
+		</Setting>
+		</Setting>
+		<Setting Id="Notes" Label="Notes" State="true">
+			<Setting Id="ID_Notes_Level01_InterceptedCommunique_C" Label="An Intercepted Communique" State="false" />
+			<Setting Id="ID_Notes_Level01_PlaytimeManifest_C" Label="Shipping Manifest July '95" State="false" />
+			<Setting Id="ID_Notes_Level01_ToyManifest_C" Label="Inventory September '95" State="false" />
+			<Setting Id="ID_Notes_Level03_OutimalNote_C" Label="Wrongside Outimal Branding Note" State="false" />
+			<Setting Id="ID_Notes_Level03_MorgueNote_C" Label="Work Procedures - Recycling &amp; Animation" State="false" />
+			<Setting Id="ID_Notes_Level03_OutimalBrandingNote_C" Label="Outimal Note" State="false" />
+			<Setting Id="ID_Notes_Level04_GibletLetter_C" Label="Giblet's Checklist" State="false" />
+			<Setting Id="ID_Notes_Level04_BetterPressNewspaper_C" Label="The Better Press, Issue 14" State="false" />
+			<Setting Id="ID_Notes_Level05_LivingFruits_C" Label="Reminder" State="false" />
+			<Setting Id="ID_Notes_Level05_PoppyGelPlants_C" Label="Lab Report: Medium Growth &amp; Plantlife" State="false" />
+			<Setting Id="ID_Notes_Level05_ScientistPersonalLetter1_C" Label="Dr. Arkins Personal Letter 1" State="false" />
+			<Setting Id="ID_Notes_Level05_MissingPrototypeHands_C" Label="GrabPack Hands Rejection" State="false" />
+			<Setting Id="ID_Notes_Level06_LetterstoLeith_C" Label="Letter to Leith #1" State="false" />
+			<Setting Id="ID_Notes_Level05_MedicalReport_C" Label="Medical Report: Edward M.N. Ritterman" State="false" />
+			<Setting Id="ID_Notes_Level05_SurvivorNote2_C" Label="To Whomever Finds This" State="false" />
+			<Setting Id="ID_Notes_Level06_ExperimentsObservations_C" Label="Conditioning Observations" State="false" />
+			<Setting Id="ID_Notes_Level07_ScientistLetter2_C" Label="Dr. Arkins Personal Letter 2" State="false" />
+			<Setting Id="ID_Notes_Level05_LeithLetter3_C" Label="Letter to Leith #2" State="false" />
+			<Setting Id="ID_Notes_Level08_LilyProtoObs_C" Label="Observation: Lily" State="false" />
+			<Setting Id="ID_Notes_Level09_LilyHairNote_C" Label="Experiment 1468 Proposal" State="false" />
+			<Setting Id="ID_Notes_Level09_SweetStreetLog_C" Label="Observation Log: Sweet Street" State="false" />
+			<Setting Id="ID_Notes_Level09_MusicSheet2_C" Label="Music Sheet Expert" State="false" />
+			<Setting Id="ID_Notes_Level09_MusicSheet3_C" Label="Music Sheet Expert" State="false" />
+			<Setting Id="ID_Notes_Level09_MusicSheet4_C" Label="Music Sheet Expert" State="false" />
+			<Setting Id="ID_Notes_Level09_NurseryDamage_C" Label="Nursery Damage" State="false" />
+			<Setting Id="ID_Notes_Level09_MusicSheet1_C" Label="Music Sheet Novice" State="false" />
+			<Setting Id="ID_Notes_Level09_LilyJournalEntry_C" Label="Lily Journal" State="false" />
+			<Setting Id="ID_Notes_Level11_LabNote1_C" Label="Dr. Arkins Personal Letter 3" State="false" />
+			<Setting Id="ID_Notes_Level11_ProtoObservation_C" Label="Experiment Notes" State="false" />
+			<Setting Id="ID_Notes_Level12_LeithJournal_C" Label="L.P. Journal" State="false" />
+			<Setting Id="ID_Notes_Level09_MsGracie_IDCard_C" Label="Ms. Gracie's Playtime ID" State="false" />
+		</Setting>
+		<Setting Id="AudioTapes" Label="Audio Tapes" State="true">
+			<Setting Id="ID_Cassette_PoppyKissy_C" Label="Sisters" State="false" />
+			<Setting Id="ID_Cassette_Level04_SecurityLog_C" Label="Security Log - 08081995-16" State="false" />
+			<Setting Id="ID_Cassette_Level04_Case_C" Label="The Case" State="false" />
+			<Setting Id="ID_Cassette_Level05_OutimalsFocusGroup_C" Label="Focus Test: The Wrongside Outimals" State="false" />
+			<Setting Id="ID_Cassette_Level05_PierreAndRitterman_C" Label="Pierre/Ritterman, August 95" State="false" />
+			<Setting Id="ID_Cassette_GracieChum_C" Label="Field Test: Chum Chompkins" State="false" />
+			<Setting Id="ID_Cassette_Level08_Gracie_C" Label="'96 ISOLATION DAY 122" State="false" />
+			<Setting Id="ID_Cassette_Level09_AJustEnd_C" Label="A Just End" State="false" />
+			<Setting Id="ID_Cassette_Level11_ElliotProto_C" Label="Elliot &amp; The Prototype" State="false" />
+			<Setting Id="ID_Cassette_Level11_ProtoInterrogates_C" Label="Interrogation" State="false" />
+		</Setting>
+		<Setting Id="Collectables" Label="Collectables" State="true">
+			<Setting Id="ID_Collectible_BindleBoogie_C" Label="Wrongside Outimal Plushie Bindle Boogie" State="false" />
+			<Setting Id="ID_Collectible_Level04_GooberGutzPlushie_C" Label="Wrongside Outimal Doll Goober GUTZ" State="false" />
+			<Setting Id="ID_Collectible_Level04_GoldenGibletTrophy_C" Label="Golden Giblet Trophy" State="false" />
+			<Setting Id="ID_Collectible_Level04_GooberGutzDoll_C" Label="Wrongside Outimal Doll GOOBER Gutz" State="false" />
+			<Setting Id="ID_Collectible_BindleBoogieDoll_C" Label="Wrongside Outimal Doll Bindle BOOGIE" State="false" />
+			<Setting Id="ID_Collectible_GoldenChumTrophy_C" Label="Golden Chum Trophy" State="false" />
+			<Setting Id="ID_Collectible_BlankyBlankzDoll_C" Label="Wrongside Outimal Plushie Blanky BLANKZ" State="false" />
+			<Setting Id="ID_Collectible_BlankyBlankz_C" Label="Wrongside Outimal Doll BLANKY Blankz" State="false" />
+			<Setting Id="ID_Collectible_Lvl8_BooBooDoll_C" Label="Wrongisde Outimal Doll Dizzy BOOBOO" State="false" />
+			<Setting Id="ID_Collectible_Lvl8_BooBoo_C" Label="Wrongside Outimal Doll DIZZY Booboo" State="false" />
+			<Setting Id="ID_Outimal_Level09_DoodleBones_Plushie_C" Label="Wrongside Outimal Plushie Doodle Bones" State="false" />
+			<Setting Id="ID_Collectible_GoldenLilyTrophy_C" Label="Golden Lily Trophy" State="false" />
+			<Setting Id="ID_Outimal_Level09_DoodleBones_Doll_C" Label="Wrongside Outimal Doll Doodle Bones" State="false" />
+			<Setting Id="ID_Collectible_LoopsyNoodle_C" Label="Wrongside Outimal Doll LOOPSY Noodle" State="false" />
+			<Setting Id="ID_Collectible_RedSmoke_C" Label="Red Smoke Sample" State="false" />
+			<Setting Id="ID_Collectible_GoldenLimonTrophy_C" Label="Golden Limon Trophy" State="false" />
+			<Setting Id="ID_Collectible_LoopsyNoodleDoll_C" Label="Wrongside Outimal Plushie Loopsy NOODLE" State="false" />
+			<Setting Id="ID_Collectible_Level12_GoldenPrototypeTrophy_C" Label="Golden Prototype Trophy" State="false" />
+		</Setting>
+		<Setting Id="VhsTapes" Label="Vhs Tapes" State="true">
+			<Setting Id="ID_VHS_HuggyReanimation_C" Label="Experiment 1170: Executive Showcase" State="false" />
+			<Setting Id="ID_VHS_Level08_C" Label="Three P's of Diorama Safety" State="false" />
+			<Setting Id="ID_VHS_Level11_C" Label="How to Maintain Your (Illegible)" State="false" />
+		</Setting>
+	</Setting>
+</Settings>
