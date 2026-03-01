@@ -157,10 +157,13 @@ split
 		}
 	}
 
-	if (settings.ContainsKey(current.LevelSection.ToString()) && settings["Checkpoints"] && !vars.completedSplits.Contains(current.LevelSection.ToString()))
+	if (settings["Checkpoints"] && settings.ContainsKey("Checkpoints"))
 	{
-		vars.completedSplits.Add(current.LevelSection.ToString());
-		return true;
+		if (settings[current.LevelSection.ToString()] && settings.ContainsKey(current.LevelSection.ToString()) && !vars.completedSplits.Contains(current.LevelSection.ToString()))
+		{
+			vars.completedSplits.Add(current.LevelSection.ToString());
+			return true;
+		}
 	}
 
 	if (current.EndCutscene == 1 && !vars.completedSplits.Contains("EndCutscene"))
