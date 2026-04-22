@@ -14,6 +14,7 @@ startup
         { "EndSplit", true, "Speedrun Category - End Splits", null },
             { "EndTriggerP1", true, "Complete the Game (Escaped - Prototype 1)", "EndSplit" },
             { "EndTriggerP2", true, "Complete the Game (Escaped - Prototype 2)", "EndSplit" },
+            { "EndTriggerPA", true, "Complete the Game (Escaped - Pre Alpha)", "EndSplit" },
     };
 
     vars.Helper.Settings.Create(_settings);
@@ -32,6 +33,9 @@ init
             break;
         case (143896576):
             version = "Prototype 2";
+            break;
+        case (164560896):
+            version = "Pre Alpha";
             break;
     }
 
@@ -73,6 +77,11 @@ init
         IntPtr EndTriggerPtr = Tool.FunctionFlag("WBP_GameEnding_Successful_C", "WBP_GameEnding_Successful_C", "OnInitialized");
         vars.Resolver.Watch<ulong>("EndTriggerP2", EndTriggerPtr);
     }
+    else if (version == "Pre Alpha")
+    {
+        IntPtr EndTriggerPtr = Tool.FunctionFlag("BP_CutsceneTrigger_Ending_PreAlpha_C", "BP_CutsceneTrigger_Ending_PreAlpha_C_UAID_3C7C3FF3637652C502", "OnCutsceneTriggerBeginOverlap");
+        vars.Resolver.Watch<ulong>("EndTriggerPA", EndTriggerPtr);
+    }
 }
 
 update
@@ -99,6 +108,10 @@ start
     {
         return current.World == "MainMap_03_P" && current.SyncLoadCount == 0;
     }
+    else if (version == "Pre Alpha")
+    {
+        return current.World == "HN3_MainMap_WP" && current.SyncLoadCount == 0;
+    }
     
     return false;
 }
@@ -112,6 +125,10 @@ reset
     else if (version == "Prototype 2")
     {
         return current.World == "HN3_MainMenu_P" && old.World == "MainMap_03_P";
+    }
+    else if (version == "Pre Alpha")
+    {
+        return current.World == "HN3_MainMenu_P" && old.World == "HN3_MainMap_WP";
     }
     
     return false;
@@ -129,6 +146,13 @@ split
     else if (version == "Prototype 2")
     {
         if (settings["EndTriggerP2"] && current.EndTriggerP2 != old.EndTriggerP2 && current.EndTriggerP2 != 0)
+        {
+            return true;
+        }
+    }
+    else if (version == "Pre Alpha")
+    {
+        if (settings["EndTriggerPA"] && current.EndTriggerPA != old.EndTriggerPA && current.EndTriggerPA != 0)
         {
             return true;
         }
